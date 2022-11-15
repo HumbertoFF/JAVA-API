@@ -2,6 +2,7 @@ package ufrn.br.ProjetoRestJustica.controller.generic;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ufrn.br.ProjetoRestJustica.controller.dto.AcaoDto;
 import ufrn.br.ProjetoRestJustica.model.generic.AbstractEntity;
 import ufrn.br.ProjetoRestJustica.service.generic.InterfaceGenericService;
 
@@ -9,7 +10,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
-public class AbstractController< E extends AbstractEntity, S extends InterfaceGenericService<E>> implements InterfaceGenericController<E>{
+public abstract class AbstractController< E extends AbstractEntity, S extends InterfaceGenericService<E>> implements InterfaceGenericController<E>{
 
     protected final S service;
 
@@ -33,7 +34,7 @@ public class AbstractController< E extends AbstractEntity, S extends InterfaceGe
     @GetMapping("/{id}")
     public ResponseEntity<E> findById(@PathVariable Long id) {
         E entity = (E)  service.findById(id);
-        entity.add(
+         entity.add(
                 linkTo(AbstractController.class)
                         .slash(entity.getClass().getSimpleName().toLowerCase()+"s/"+entity.getId())
                         .withSelfRel()
@@ -45,7 +46,7 @@ public class AbstractController< E extends AbstractEntity, S extends InterfaceGe
                         .withRel("delete")
 
         );
-        return (ResponseEntity<E>) ResponseEntity.ok().body(service.findById(id));
+        return  ResponseEntity.ok().body(entity);
     }
 
     @Override

@@ -1,12 +1,17 @@
 package ufrn.br.ProjetoRestJustica.controller.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import ufrn.br.ProjetoRestJustica.model.Acao;
 import ufrn.br.ProjetoRestJustica.model.enums.StatusAcao;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AcaoDto {
 
     private StatusAcao status = StatusAcao.NOVO;

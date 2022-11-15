@@ -3,7 +3,6 @@ package ufrn.br.ProjetoRestJustica.model.pojo;
 import lombok.*;
 import ufrn.br.ProjetoRestJustica.model.generic.AbstractEntity;
 import ufrn.br.ProjetoRestJustica.model.Acao;
-import ufrn.br.ProjetoRestJustica.model.enums.Genero;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -25,6 +24,11 @@ public class PessoaFisica extends AbstractEntity {
     @OneToMany(mappedBy = "solicitante", fetch = FetchType.LAZY, orphanRemoval = true,
     cascade = CascadeType.ALL)
     private List<Acao> acao = new ArrayList<>();
+
+    public PessoaFisica(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
 
     public void addAcao(Acao inseriracao){
         acao.add(inseriracao);
