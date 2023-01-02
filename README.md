@@ -1,0 +1,1 @@
+API-RESTEsta API de estudos com base no modelo de criação de uma ação judicial, a classe Acao é a classe principal que armazena as informações relacionadas ao cadastro de uma ação, como por exemplo, pessoa física, jurídica, demandante(Quem  solicita a ação judicial), servidor(atendente), endereço, doença, relacionada(em caso de assuntos previdênciários) e o usuário de acesso. 
